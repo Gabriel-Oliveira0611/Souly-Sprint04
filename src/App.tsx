@@ -2,6 +2,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Sobre from "./pages/Sobre";
+import Integrantes from "./pages/Integrantes";
+import Faq from "./pages/Faq";
+import SobreSouly from "./pages/SobreSouly";
+import SoulyComoGuia from "./pages/SoulyComoGuia";
+import Contato from "./pages/Contato";
+import NaoEncontrada from "./pages/NaoEncontrada";
 
 export default function App() {
   return (
@@ -19,7 +26,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<p className="mx-auto max-w-6xl px-5 py-12">Esta página será conectada nas próximas etapas.</p>} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/integrantes" element={<Integrantes />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/sobre-souly" element={<SobreSouly />} />
+          <Route path="/souly-como-guia" element={<SoulyComoGuia />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="*" element={<NaoEncontrada />} />
         </Routes>
       </main>
 
