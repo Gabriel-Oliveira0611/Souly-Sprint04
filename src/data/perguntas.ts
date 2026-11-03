@@ -1,0 +1,9 @@
+export const perguntas = [
+  { pergunta: "O que já funciona no EcoPulse?", resposta: "Você pode consultar missões e recompensas, abrir seus detalhes, cadastrar novos registros, editar informações e excluí-los. As missões também podem ser ativadas ou desativadas. Esses dados são enviados à API Java do projeto." },
+  { pergunta: "Como criar uma missão?", resposta: "Cadastre uma recompensa no catálogo. Depois, em Missões, selecione Nova missão e informe o título, o tipo, o período e ao menos uma recompensa. As regras e a descrição ajudam a explicar a ação sustentável." },
+  { pergunta: "Por que uma missão ativa pode estar indisponível?", resposta: "O status e o período são informações diferentes. A disponibilidade depende de a missão estar ativa e de o horário atual estar entre as datas de início e término. A data de término é opcional." },
+  { pergunta: "As recompensas já dão descontos reais ou créditos de transporte?", resposta: "O catálogo permite cadastrar e vincular recompensas às missões. A conversão em descontos ou créditos em serviços de parceiros faz parte da proposta futura e ainda não está integrada." },
+  { pergunta: "O Souly já conversa usando inteligência artificial?", resposta: "O Souly é a arara-azul que representa nosso guia. Suas páginas e vídeos apresentam a proposta do assistente. A integração atual utiliza a API Java para missões e recompensas; não há chat de IA disponível." },
+  { pergunta: "O que fazer se os dados demorarem para carregar?", resposta: "O servidor pode levar um pouco mais de tempo no primeiro acesso. Aguarde o carregamento e, se aparecer uma mensagem de erro, use Tentar novamente. Os dados que não puderam ser carregados não são substituídos por exemplos." },
+  { pergunta: "Como falar com a equipe?", resposta: "As páginas Contato e Integrantes reúnem os links profissionais dos responsáveis pelo projeto." },
+];
