@@ -9,10 +9,12 @@ import SobreSouly from "./pages/SobreSouly";
 import SoulyComoGuia from "./pages/SoulyComoGuia";
 import Contato from "./pages/Contato";
 import NaoEncontrada from "./pages/NaoEncontrada";
+import RouteEffects from "./components/RouteEffects";
 
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-700">
+      <RouteEffects />
       <a
         href="#conteudo"
         className="sr-only z-50 bg-teal-950 p-4 text-white focus:not-sr-only focus:absolute"
