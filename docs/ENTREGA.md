@@ -16,8 +16,8 @@ Aplicação web do SoulUp Challenge para gestão de missões sustentáveis e rec
 | Integração | `develop` |
 | API Java | [URL base publicada](https://ecopulse-soulup-api.onrender.com/api/v1) |
 | Contratos e operações da API | [Swagger UI](https://ecopulse-soulup-api.onrender.com/swagger-ui/index.html) |
-| CI da versão revisada | [Execução aprovada na main](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41724340723) |
-| Publicação na Vercel | Em preparação; URL pública ainda não informada |
+| CI da versão revisada | [Execução aprovada na main](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41726258831) |
+| Publicação na Vercel | [EcoPulse publicado](https://souly-sprint04.vercel.app) |
 | Vídeo de apresentação da Sprint 4 | Não entregue, por decisão da equipe |
 
 A seção **Como Usar** do [README](../README.md#como-usar) concentra os acessos destinados à avaliação.
@@ -39,7 +39,7 @@ Os vídeos institucionais existentes em `public/videos/` fazem parte do conteúd
 
 ## Publicação na Vercel
 
-A publicação ainda será realizada pela equipe. Utilize as configurações abaixo:
+A aplicação está publicada em [https://souly-sprint04.vercel.app](https://souly-sprint04.vercel.app). A configuração de referência do projeto é:
 
 | Configuração | Valor |
 | --- | --- |
@@ -52,20 +52,13 @@ A publicação ainda será realizada pela equipe. Utilize as configurações aba
 | Output Directory | `dist` |
 | Variável `VITE_API_BASE_URL` | `https://ecopulse-soulup-api.onrender.com/api/v1` |
 
-O arquivo `vercel.json` encaminha as rotas da SPA para `index.html`. Depois da publicação:
+O arquivo `vercel.json` encaminha as rotas da SPA para `index.html`. Na conferência pública de 03/11/2026, foram verificadas a página inicial, as páginas institucionais, as listagens de missões e recompensas e os detalhes de registros da API. A rota `/missoes/2` também carregou após recarregar a página, sem erro de rota 404.
 
-1. Abra a URL pública e confira as páginas institucionais.
-2. Acesse `/missoes` e `/recompensas` e confira o carregamento da API.
-3. Abra uma rota de detalhes existente e atualize a página para verificar o fallback.
-4. Execute um cadastro e reabra o registro para conferir a comunicação com o backend.
-5. Confirme que o site pode ser acessado sem autenticação de acesso à publicação.
-6. Insira a URL real na seção **Como Usar** do README e atualize a situação do deploy nesta documentação.
-
-Caso o navegador apresente bloqueio de CORS, ajuste a origem permitida no backend para incluir o domínio publicado.
+O escopo e os resultados observados estão registrados em [TESTES.md](TESTES.md#validação-do-ambiente-publicado).
 
 ## Conferência e geração do ZIP
 
-Após atualizar os links finais, execute na raiz do projeto:
+Para repetir as verificações locais, execute na raiz do projeto:
 
 ~~~bash
 npm ci
@@ -97,7 +90,7 @@ O envio deve ocorrer exclusivamente pelo **Portal do Aluno**, na área da discip
 | Projeto executável após `npm ci` | Scripts e instalação no README |
 | Repositório público e histórico disponível | GitHub da equipe |
 | API publicada e acessível | URL base e Swagger |
-| Front-end público na Vercel e URL documentada | Finalizar após o deploy |
+| Front-end público na Vercel e URL documentada | [Aplicação publicada](https://souly-sprint04.vercel.app) |
 | ZIP completo e com até 50 MB | Arquivo gerado a partir da main |
 | Apresentação no YouTube | Não incluída nesta entrega |
 

@@ -12,13 +12,13 @@ Aplicação do SoulUp Challenge da FIAP para gerenciar missões sustentáveis e 
 | Recurso | Acesso / situação |
 | --- | --- |
 | Repositório do front-end | [Souly-Sprint04 no GitHub](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04) |
-| Aplicação na Vercel | **Publicação em preparação. A URL pública será informada após o deploy.** |
+| Aplicação na Vercel | [Acessar o EcoPulse publicado](https://souly-sprint04.vercel.app) |
 | API Java publicada | [URL base da API](https://ecopulse-soulup-api.onrender.com/api/v1) |
 | Documentação da API | [Swagger UI](https://ecopulse-soulup-api.onrender.com/swagger-ui/index.html) |
 | Código-fonte da API | [ChallengeEcopulseMaven](https://github.com/pedrohcnascimento/ChallengeEcopulseMaven) |
 | Apresentação da Sprint 4 no YouTube | **Não entregue nesta Sprint, por decisão da equipe.** |
 
-O código-fonte da versão estável está na branch `main`. A implementação de integração com a API e as verificações automatizadas estão documentadas em [Testes e evidências](docs/TESTES.md). A entrega desta Sprint não inclui vídeo de apresentação.
+A aplicação está publicada na Vercel e o código-fonte da versão estável está na branch `main`. A implementação de integração com a API e as verificações automatizadas estão documentadas em [Testes e evidências](docs/TESTES.md). A entrega desta Sprint não inclui vídeo de apresentação.
 
 ### Instalar e executar
 
@@ -59,7 +59,7 @@ As páginas realizam operações reais no backend. O catálogo não representa r
 3. Use Framework Preset Vite, Install Command npm ci, Build Command npm run build e Output Directory dist.
 4. Configure VITE_API_BASE_URL com o valor acima nos ambientes de publicação necessários.
 5. Publique e confira /missoes, /recompensas e a abertura direta de uma rota de detalhes.
-6. Insira a URL pública definitiva na tabela Como Usar.
+6. Ao alterar o endereço de produção, atualize o link na tabela Como Usar.
 
 O arquivo vercel.json inclui o fallback de SPA para que atualizar uma rota dinâmica não gere 404. Se a API restringir origens CORS, libere o domínio publicado na configuração do backend.
 
@@ -148,7 +148,7 @@ Para executar as verificações em sequência:
 npm run check
 ~~~
 
-Na revisão de 03/11/2026, a [execução da CI na branch main](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41724340723) concluiu instalação, TypeScript, lint, 37 testes e build de produção. O registro completo e os limites dessa verificação estão em [docs/TESTES.md](docs/TESTES.md).
+Na revisão de 03/11/2026, a [execução da CI na branch main](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41726258831) concluiu instalação, TypeScript, lint, 37 testes e build de produção. O registro completo e os limites dessa verificação estão em [docs/TESTES.md](docs/TESTES.md).
 
 O build gera `dist`. O comando `npm run preview` serve o último build local.
 

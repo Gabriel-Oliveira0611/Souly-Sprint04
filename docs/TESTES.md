@@ -1,8 +1,8 @@
 # Testes e evidências — EcoPulse | Sprint 4
 
 **Data da revisão:** 03/11/2026  
-**Versão de código verificada:** [`1efd62a`](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/commit/1efd62ae32f78cb39350b5620f32befb81b0711f)  
-**Registro reproduzível:** [GitHub Actions — Qualidade do front-end](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41724340723)
+**Versão de código verificada:** [`8550e85`](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/commit/8550e85fffdc4b81d219e4e8bc880df95dbddb12)  
+**Registro reproduzível:** [GitHub Actions — Qualidade do front-end](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41726258831)
 
 ## Verificação automatizada da main
 
@@ -69,18 +69,25 @@ npm run preview
 
 Abra a URL informada no terminal. O script `preview` exige um build já gerado; `npm run check` realiza essa etapa.
 
-## Validação após o deploy
+## Validação do ambiente publicado
 
-A equipe informou que ainda publicará o front-end na Vercel. Assim, a validação no domínio final ainda não está registrada.
+**Endereço verificado:** [EcoPulse na Vercel](https://souly-sprint04.vercel.app)  
+**Data:** 03/11/2026
 
-| Cenário                   | Conferência a realizar no endereço publicado                          |
-| ------------------------- | --------------------------------------------------------------------- |
-| Acesso público            | Abrir o site sem autenticação de acesso à publicação                  |
-| Listagem e detalhes       | Consultar missões e recompensas retornadas pelo backend               |
-| Rotas profundas           | Abrir e atualizar uma rota de detalhes existente                      |
-| Escrita                   | Cadastrar um registro de demonstração e reabri-lo                     |
-| Persistência observada    | Recarregar a interface e confirmar que o registro pode ser consultado |
-| Comunicação entre origens | Confirmar que as requisições não são bloqueadas por CORS              |
-| Layout                    | Conferir navegação e formulários em celular, tablet e desktop         |
+A conferência foi realizada no navegador Edge, acessando o domínio público da aplicação.
+
+| Cenário | Resultado observado |
+| --- | --- |
+| Acesso público | Página inicial aberta sem tela de autenticação da publicação |
+| Páginas institucionais | Sobre, Integrantes, FAQ e Contato abertas pelo menu, com seus conteúdos |
+| Listagem de missões | Carregamento de Desafio da Reciclagem e Economize água no dia a dia |
+| Listagem de recompensas | Carregamento de EcoPontos e Selo Guardião da Água |
+| Detalhe de missão | `/missoes/2` exibiu descrição, regras, datas, status e recompensa vinculada |
+| Atualização de rota profunda | `/missoes/2` voltou a exibir os detalhes após recarregar a página, sem erro de rota 404 |
+| Detalhe de recompensa | `/recompensas/2` exibiu Selo Guardião da Água, tipo SELO, valor 1 e condições |
+| Comunicação com a API | As consultas pelo front-end publicado retornaram dados; não houve bloqueio de CORS nessas leituras |
+| Apresentação visual | A página inicial foi inspecionada na janela de desktop, com estilos e imagem do Souly renderizados |
+
+Esta conferência cobriu acesso, navegação e leitura. Os resultados das operações de escrita constam dos testes automatizados e do registro manual anterior descritos acima; essas operações não foram repetidas no banco remoto nesta etapa. A revisão responsiva anterior permanece identificada em sua seção própria.
 
 A persistência após reinício do serviço depende da configuração do banco e do perfil do backend; esse comportamento não é demonstrado pelos testes automatizados do front-end.
