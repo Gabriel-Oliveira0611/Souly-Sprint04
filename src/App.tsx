@@ -12,6 +12,9 @@ import NaoEncontrada from "./pages/NaoEncontrada";
 import Missoes from "./pages/Missoes";
 import DetalheMissao from "./pages/DetalheMissao";
 import FormularioMissao from "./pages/FormularioMissao";
+import Recompensas from "./pages/Recompensas";
+import DetalheRecompensa from "./pages/DetalheRecompensa";
+import FormularioRecompensa from "./pages/FormularioRecompensa";
 import RouteEffects from "./components/RouteEffects";
 
 export default function App() {
@@ -35,6 +38,10 @@ export default function App() {
           <Route path="/missoes/nova" element={<FormularioMissao />} />
           <Route path="/missoes/:id" element={<DetalheMissao />} />
           <Route path="/missoes/:id/editar" element={<FormularioMissao />} />
+          <Route path="/recompensas" element={<Recompensas />} />
+          <Route path="/recompensas/nova" element={<FormularioRecompensa />} />
+          <Route path="/recompensas/:id" element={<DetalheRecompensa />} />
+          <Route path="/recompensas/:id/editar" element={<FormularioRecompensa />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/integrantes" element={<Integrantes />} />
           <Route path="/faq" element={<Faq />} />
