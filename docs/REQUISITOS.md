@@ -1,36 +1,78 @@
-# Critérios da Sprint 4 — situação da implementação
+# Requisitos e evidências — Sprint 4
 
-Fonte: enunciado FIAP, páginas 75 a 92. Os estados abaixo descrevem evidências; não garantem nota.
+**Projeto:** EcoPulse | SoulUp Challenge  
+**Disciplina:** Front-End Design Engineering — FIAP  
+**Turma:** 1TDSPW  
+**Revisão:** 03/11/2026
 
-| Critério | Pontos | Evidência no código | Situação |
+Esta matriz relaciona o enunciado de Front-End Design Engineering, páginas 75 a 92, aos arquivos e aos registros verificáveis do projeto. A pontuação representa o peso definido no enunciado; a atribuição da nota cabe à avaliação docente.
+
+## Matriz de critérios
+
+| Critério | Peso | Evidências | Situação documentada |
 | --- | ---: | --- | --- |
-| Rotas estáticas e dinâmicas | 10 | App.tsx, /missoes/:id, /recompensas/:id, useParams, validação de IDs e redirecionamentos | Implementado |
-| Tipos TypeScript | 10 | types/api.ts: interfaces, union de status/estado, intersection de entradas, Omit e genéricos | Implementado com strict |
-| Tailwind e responsividade | 15 | Classes responsivas; menu acessível; grades de listagem e formulários | Implementado; inspeção visual documentada |
-| Vercel | 10 | vercel.json e instruções de publicação no README | Configuração pronta; publicação e URL pendentes |
-| Integração API | 30 | services/http.ts, missions.ts, rewards.ts; GET, POST, PUT, PATCH e DELETE; loading/erro/vazio | Implementado; testes descritos em TESTES.md |
-| Versionamento | 10 | Repositório existente e workflow de CI | Enviar alterações e conferir contribuição real de cada integrante |
-| README | 10 | Descrição, tecnologias, estrutura, autores, fotos, links e contato | Conteúdo preparado; URLs de Vercel e vídeo pendentes |
-| Vídeo | 5 | Roteiro de até 3 minutos em ENTREGA.md | Gravação/publicação pendentes |
+| Rotas estáticas e dinâmicas | 10 | [App.tsx](../src/App.tsx), rotas `/missoes/:id` e `/recompensas/:id`, validação de IDs, redirecionamentos e mensagens | Implementado; navegação coberta por testes |
+| Tipagem TypeScript | 10 | [types/api.ts](../src/types/api.ts), interfaces, union types, intersection types e genéricos | Implementado; TypeScript aprovado na CI |
+| Tailwind CSS e responsividade | 15 | Classes responsivas de componentes, páginas e formulários; menu para celular | Implementado; revisão visual registrada em TESTES.md |
+| Publicação na Vercel | 10 | [vercel.json](../vercel.json), build e fallback de SPA | Configuração preparada; publicação e URL ainda a finalizar |
+| Integração com API Java | 30 | [http.ts](../src/services/http.ts), [missions.ts](../src/services/missions.ts), [rewards.ts](../src/services/rewards.ts), tipagem e estados de carregamento, erro e vazio | Implementado; testes automatizados e registro de validação manual |
+| Versionamento no GitHub | 10 | [Repositório público](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04), branches `main`, `develop` e `feature/*`, histórico de commits e CI | Histórico publicado; contagem registrada abaixo |
+| README técnico e informativo | 10 | [README](../README.md): descrição, tecnologias, estrutura, autores, imagens, execução e contato | Documentação revisada; URL da Vercel ainda será inserida e vídeo não será entregue |
+| Apresentação em vídeo | 5 | Situação declarada na seção Como Usar do README | Não entregue, por decisão da equipe |
 
-## Regras transversais
+## Páginas exigidas
 
-- React + Vite + TypeScript e SPA preservados.
-- Estilização da aplicação exclusivamente com Tailwind CSS.
-- Fetch nativo; sem Axios, Bootstrap, Material UI, Chakra UI ou jQuery.
-- Home, Sobre, Integrantes, FAQ e Contato mantidas.
-- Missões e Recompensas são duas páginas extras funcionais, além das páginas de apresentação do Souly.
-- Integrantes apresentam nome, foto, RM, turma, GitHub e LinkedIn.
-- Pelo menos uma listagem, um detalhe e uma escrita estão implementados para a API Java remota.
-- O frontend não usa dados fictícios como substituição silenciosa para falhas da API.
+| Exigência | Rotas implementadas |
+| --- | --- |
+| Página inicial | `/`; `/home` redireciona para `/` |
+| Sobre a proposta | `/sobre` |
+| Integrantes | `/integrantes` |
+| Perguntas frequentes | `/faq` |
+| Contato | `/contato` |
+| Páginas da solução | `/missoes` e `/recompensas`, com listagens, formulários e detalhes |
+| Conteúdo complementar da solução | `/sobre-souly` e `/souly-como-guia` |
 
-## O que ainda depende da equipe
+A página de integrantes e a tabela do README apresentam nome, foto, RM, turma e links profissionais do GitHub e do LinkedIn.
 
-1. Incorporar e enviar o código ao repositório público correto.
-2. Manter GitFlow e contribuições reais: pelo menos cinco commits por integrante e quinze no total. Com cinco integrantes, o mínimo individual resulta em pelo menos 25 commits.
-3. Publicar na Vercel, garantir acesso público e inserir a URL no README.
-4. Gravar até três minutos demonstrando a integração e publicar no YouTube.
-5. Atualizar o README com o vídeo e conferir os dados dos integrantes.
-6. Gerar o ZIP final atualizado, sem node_modules, e enviá-lo no Portal do Aluno.
+## Integração com o backend
 
-Esta versão não fabrica commits nem substitui a participação individual exigida pela FIAP.
+A URL base configurada é `https://ecopulse-soulup-api.onrender.com/api/v1`.
+
+| Necessidade do enunciado | Implementação |
+| --- | --- |
+| Consultar uma listagem | `GET /missions` e `GET /rewards` |
+| Consultar detalhes | `GET /missions/{id}` e `GET /rewards/{id}` |
+| Realizar uma escrita | Cadastro com POST, edição com PUT, alteração de status de missão com PATCH e exclusão com DELETE |
+| Organizar as chamadas HTTP | Serviços específicos em `src/services` |
+| Exibir carregamento, falha e resposta vazia | `useRequest`, `ApiState` e estados tipados da requisição |
+| Tipar respostas e dados de envio | Interfaces e tipos em `src/types/api.ts` |
+| Compartilhar feedback | `FeedbackProvider` e hook `useFeedback` |
+
+As chamadas usam Fetch nativo. Os testes automatizados usam respostas controladas, conforme descrito em [TESTES.md](TESTES.md).
+
+## Histórico de versionamento
+
+O fluxo utiliza `feature/*` para desenvolvimento, `develop` para integração e `main` para a versão estável.
+
+Na revisão do commit [`1efd62a`](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/commit/1efd62ae32f78cb39350b5620f32befb81b0711f), foram encontrados **27 commits** alcançáveis pela `main`, com a seguinte autoria registrada:
+
+| Integrante | Nome registrado nos commits | Quantidade |
+| --- | --- | ---: |
+| Gabriel Pereira de Oliveira | Gabriel-Oliveira0611 | 7 |
+| Adalto Massahiro Nagabe | AdaltoNagabe | 5 |
+| Pedro Henrique Carvalho | PHCN | 5 |
+| Murillo Siviero Lopes | MurilloSLopes | 5 |
+| Kauã Barros Ferreira | KauaBF | 5 |
+| **Total** | | **27** |
+
+A contagem corresponde ao registro consultado em 03/11/2026, antes da incorporação desta revisão da documentação. O enunciado exige ao menos cinco commits por integrante e quinze no total. A avaliação qualitativa das contribuições é feita pelo histórico do repositório.
+
+## Situação final desta revisão
+
+- Código-fonte publicado em repositório público.
+- CI da versão estável concluída com sucesso, incluindo 37 testes.
+- Documentação atualizada para o repositório da Sprint 4.
+- Deploy na Vercel ainda será realizado; o endereço público precisa ser incluído no README após a publicação.
+- Vídeo da Sprint 4 não incluído nesta entrega.
+
+O vídeo possui peso de 5 pontos no critério específico e o link do YouTube integra o item Como Usar do README. A declaração de ausência registra a situação da entrega e não atende esses itens do enunciado.

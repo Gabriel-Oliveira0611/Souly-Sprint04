@@ -1,51 +1,86 @@
-# Verificações realizadas em 03/11/2026
+# Testes e evidências — EcoPulse | Sprint 4
 
-## Verificações locais
+**Data da revisão:** 03/11/2026  
+**Versão de código verificada:** [`1efd62a`](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/commit/1efd62ae32f78cb39350b5620f32befb81b0711f)  
+**Registro reproduzível:** [GitHub Actions — Qualidade do front-end](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41724340723)
 
-- npm ci: dependências instaladas com sucesso.
-- npm run typecheck: passou com strict e noUncheckedIndexedAccess.
-- npm run lint: passou sem avisos ou erros do código.
-- npm test: 37 testes passaram em três arquivos.
-- npm run build: build de produção concluído.
+## Verificação automatizada da main
 
-O npm exibiu um aviso sobre configuração de proxy do ambiente de execução. Não é uma falha do projeto.
+A execução consultada terminou com a conclusão **success**. O job `check` executou `npm ci` e `npm run check` em Ubuntu, com Node.js 24.22.0 e npm 11.19.1.
 
-## Cobertura automatizada
+| Etapa            | Comando             | Resultado registrado                 |
+| ---------------- | ------------------- | ------------------------------------ |
+| Instalação       | `npm ci`            | Concluída                            |
+| Tipagem          | `npm run typecheck` | Aprovada                             |
+| Análise estática | `npm run lint`      | Zero erros e zero avisos do Oxlint   |
+| Testes           | `npm test`          | 37 testes aprovados em três arquivos |
+| Produção         | `npm run build`     | Build concluído; saída em `dist`     |
 
-| Área | Comportamentos verificados |
-| --- | --- |
-| HTTP | JSON, cabeçalhos, POST, DELETE 204, validação 400, erro HTML, resposta inválida, falha de rede, cancelamento e timeout |
-| Validação | IDs positivos seguros, associação obrigatória, datas ISO, intervalo de datas, limites inteiros de recompensa e normalização |
-| Interface | Listagem, filtros, vazio, erro com nova tentativa, detalhe dinâmico, 404, ID inválido, criação de recompensa e missão, PUT, PATCH, confirmação de DELETE e recusa 409 |
-| Navegação | Redirecionamentos, mensagens de sucesso e menu de celular |
+O resultado se refere ao código identificado acima. Alterações posteriores devem ser verificadas pela execução correspondente da CI.
 
-Os testes usam respostas HTTP controladas. Eles não provam, isoladamente, a disponibilidade do Render, a persistência do Oracle ou o deploy na Vercel. O teste de DELETE e de conflito 409 foi feito apenas com respostas controladas.
+## Distribuição dos testes
 
-## Verificação manual com a API publicada
+| Arquivo                                               | Quantidade | Comportamentos exercitados                                                                                                                               |
+| ----------------------------------------------------- | ---------: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [http.test.ts](../src/services/http.test.ts)          |          8 | Envio de JSON e cabeçalhos, DELETE com 204, detalhes de validação, erro HTML, resposta inválida, falha de rede, cancelamento e timeout                   |
+| [validation.test.ts](../src/utils/validation.test.ts) |         15 | IDs de rota, conversão de datas, associação obrigatória de recompensa, intervalo de datas, normalização e limites inteiros                               |
+| [app.test.tsx](../src/test/app.test.tsx)              |         14 | Navegação, filtros, vazio, erro e nova tentativa, detalhes, IDs inválidos, cadastros, edição, mudança de status, exclusão com confirmação e conflito 409 |
+| **Total**                                             |     **37** |                                                                                                                                                          |
 
-A interface de desenvolvimento foi conectada à URL real https://ecopulse-soulup-api.onrender.com/api/v1. Não foi usado proxy local nem backend de exemplo para essa etapa.
+A configuração dos testes utiliza Vitest, React Testing Library, user-event e jsdom. Os testes substituem as respostas de `fetch` e não escrevem no banco remoto. Esses resultados demonstram os comportamentos exercitados no ambiente de teste; não comprovam a disponibilidade contínua da API ou da publicação na Vercel.
 
-- GET /missions: carregou a missão preexistente Desafio da Reciclagem.
-- GET /missions/1: abriu regras, datas, status e a recompensa EcoPontos.
-- POST /rewards: criou Selo Guardião da Água, tipo SELO, valor 1, retornado como ID 2.
-- POST /missions: criou Economize água no dia a dia, vinculada à recompensa ID 2, retornada como ID 2 e com status INATIVA.
-- PUT /missions/2: atualizou a descrição e confirmou o texto retornado ao reabrir os detalhes.
-- PATCH /missions/2/status: ativou a missão; o detalhe retornou ATIVA e disponível no período atual.
-- O frontend abriu os detalhes consultando novamente a API após cada cadastro e edição.
+## Registro de validação manual com a API Java
 
-Os dois registros de demonstração permanecem no backend. Não foram removidos registros existentes.
+A validação manual já registrada no projeto utilizou a interface de desenvolvimento conectada à API pública, sem proxy local:
 
-A disponibilidade remota foi confirmada pelo navegador. Requisições diretas do terminal ao mesmo serviço excederam o tempo de espera; isso não impediu o fluxo pelo frontend.
+`https://ecopulse-soulup-api.onrender.com/api/v1`
 
-## Revisão responsiva
+| Operação observada         | Resultado registrado                                                                  |
+| -------------------------- | ------------------------------------------------------------------------------------- |
+| `GET /missions`            | Listagem da missão preexistente Desafio da Reciclagem                                 |
+| `GET /missions/1`          | Abertura de regras, datas, status e recompensa EcoPontos                              |
+| `POST /rewards`            | Cadastro de Selo Guardião da Água, tipo SELO, valor 1, ID retornado 2                 |
+| `POST /missions`           | Cadastro de Economize água no dia a dia, vinculada à recompensa 2, com ID retornado 2 |
+| `PUT /missions/2`          | Atualização da descrição, confirmada ao reabrir os detalhes                           |
+| `PATCH /missions/2/status` | Alteração da missão para ATIVA, refletida na interface                                |
 
-Foram inspecionadas visualmente a página inicial e as telas de cadastro. Os formulários de missão e recompensa foram renderizados em quadros de 320, 480, 768, 992 e 1440 px. Os campos do formulário de missão ficaram dentro dos limites do formulário nas cinco larguras após corrigir a largura mínima dos fieldsets.
+Os resultados acima preservam o registro de validação anterior desta Sprint. Eles não representam uma nova execução no ambiente publicado. A exclusão e o conflito 409 estão cobertos por testes com respostas controladas; não foram apresentados como exclusões reais de registros existentes.
 
-Essa revisão cobre os layouts observados no navegador Chromium; não equivale a testes completos em aparelhos físicos ou em todos os navegadores.
+## Registro de revisão responsiva
 
-## Verificações ainda necessárias para a entrega
+A revisão visual registrada utilizou Chromium e incluiu a página inicial e as telas de cadastro. Os formulários de missão e recompensa foram inspecionados nas larguras de 320, 480, 768, 992 e 1440 px. Nessa revisão, os campos do formulário de missão permaneceram dentro dos limites do formulário após o ajuste de largura mínima dos fieldsets.
 
-- Publicar na Vercel e repetir o fluxo de GET e escrita no domínio definitivo.
-- Conferir CORS para o domínio publicado e acesso sem login ao frontend.
-- Verificar a persistência após reinício do serviço conforme o banco e perfil configurados no Render.
-- Conferir o vídeo, os links finais e o histórico colaborativo.
+Esse registro se limita às telas e larguras inspecionadas. Os testes automatizados desta versão não constituem uma auditoria visual completa em aparelhos físicos ou em todos os navegadores.
+
+## Reprodução local
+
+Na raiz do projeto:
+
+```bash
+npm ci
+npm run check
+```
+
+Para visualizar o build de produção:
+
+```bash
+npm run preview
+```
+
+Abra a URL informada no terminal. O script `preview` exige um build já gerado; `npm run check` realiza essa etapa.
+
+## Validação após o deploy
+
+A equipe informou que ainda publicará o front-end na Vercel. Assim, a validação no domínio final ainda não está registrada.
+
+| Cenário                   | Conferência a realizar no endereço publicado                          |
+| ------------------------- | --------------------------------------------------------------------- |
+| Acesso público            | Abrir o site sem autenticação de acesso à publicação                  |
+| Listagem e detalhes       | Consultar missões e recompensas retornadas pelo backend               |
+| Rotas profundas           | Abrir e atualizar uma rota de detalhes existente                      |
+| Escrita                   | Cadastrar um registro de demonstração e reabri-lo                     |
+| Persistência observada    | Recarregar a interface e confirmar que o registro pode ser consultado |
+| Comunicação entre origens | Confirmar que as requisições não são bloqueadas por CORS              |
+| Layout                    | Conferir navegação e formulários em celular, tablet e desktop         |
+
+A persistência após reinício do serviço depende da configuração do banco e do perfil do backend; esse comportamento não é demonstrado pelos testes automatizados do front-end.

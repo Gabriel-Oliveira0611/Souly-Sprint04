@@ -1,33 +1,37 @@
-# EcoPulse | Sprint 4 — Front-End Design Engineering
+# EcoPulse | SoulUp Challenge — Sprint 4
 
 Aplicação do SoulUp Challenge da FIAP para gerenciar missões sustentáveis e recompensas, desenvolvida com React, Vite, TypeScript e Tailwind CSS. Evolui o projeto da Sprint 3 e consome a API Java do grupo por HTTP.
 
-![EcoPulse](public/images/headerIcon.png)
-![Souly, mascote do projeto](public/images/souly-perfil.jpg)
+<p align="center">
+  <img src="public/images/headerIcon.png" width="120" alt="Identidade visual do EcoPulse">
+  <img src="public/images/souly-perfil.jpg" width="120" alt="Souly, mascote do EcoPulse">
+</p>
 
 ## Como Usar
 
-| Acesso exigido pela FIAP | Link / situação |
+| Recurso | Acesso / situação |
 | --- | --- |
-| GitHub do front-end | https://github.com/Gabriel-Oliveira0611/Sprint03-EcoPulse-Front-End-Design-Engineering |
-| API Java publicada | https://ecopulse-soulup-api.onrender.com/api/v1 |
-| Swagger | https://ecopulse-soulup-api.onrender.com/swagger-ui/index.html |
-| Código da API | https://github.com/pedrohcnascimento/ChallengeEcopulseMaven |
-| Front-end na Vercel | **PENDENTE — publicar esta versão e inserir a URL pública aqui.** |
-| Vídeo no YouTube, até 3 minutos | **PENDENTE — gravar esta versão integrada e inserir o link aqui.** |
+| Repositório do front-end | [Souly-Sprint04 no GitHub](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04) |
+| Aplicação na Vercel | **Publicação em preparação. A URL pública será informada após o deploy.** |
+| API Java publicada | [URL base da API](https://ecopulse-soulup-api.onrender.com/api/v1) |
+| Documentação da API | [Swagger UI](https://ecopulse-soulup-api.onrender.com/swagger-ui/index.html) |
+| Código-fonte da API | [ChallengeEcopulseMaven](https://github.com/pedrohcnascimento/ChallengeEcopulseMaven) |
+| Apresentação da Sprint 4 no YouTube | **Não entregue nesta Sprint, por decisão da equipe.** |
 
-O link do GitHub aponta para o repositório existente. As alterações desta versão precisam ser incorporadas à branch da equipe e enviadas ao GitHub. Não considere o site pronto para entrega enquanto houver pendências nesta tabela.
+O código-fonte da versão estável está na branch `main`. A implementação de integração com a API e as verificações automatizadas estão documentadas em [Testes e evidências](docs/TESTES.md). A entrega desta Sprint não inclui vídeo de apresentação.
 
 ### Instalar e executar
 
-Use Node.js 24.15 ou superior da linha 24. Também são compatíveis as linhas 22 a partir de 22.22.2 e 26 ou superior, conforme as dependências de testes. A instalação deve ocorrer na pasta que contém package.json.
+Use Node.js 24.15 ou superior da linha 24. Também são compatíveis as linhas 22 a partir de 22.22.2 e 26 ou superior, conforme as dependências de testes. A instalação deve ocorrer na pasta que contém `package.json`.
 
 ~~~bash
+git clone https://github.com/Gabriel-Oliveira0611/Souly-Sprint04.git
+cd Souly-Sprint04
 npm ci
 npm run dev
 ~~~
 
-O endereço local aparece no terminal, normalmente http://localhost:5173. Não abra index.html por duplo clique ou Live Server.
+Abra no navegador o endereço informado pelo Vite no terminal, normalmente `http://localhost:5173`.
 
 A URL pública da API já é o padrão. Para alterá-la, copie .env.example para .env e ajuste:
 
@@ -35,7 +39,7 @@ A URL pública da API já é o padrão. Para alterá-la, copie .env.example para
 VITE_API_BASE_URL=https://ecopulse-soulup-api.onrender.com/api/v1
 ~~~
 
-Inclua /api/v1 no final, sem /swagger-ui. Reinicie o Vite depois de alterar o .env. As variáveis VITE_ ficam visíveis no navegador: configure apenas a URL pública, nunca senhas do Oracle ou segredos.
+Inclua /api/v1 no final, sem /swagger-ui. Reinicie o Vite depois de alterar o .env. Essa variável recebe a URL pública do serviço; a configuração do banco pertence ao backend.
 
 ### Experimentar a integração
 
@@ -50,8 +54,8 @@ As páginas realizam operações reais no backend. O catálogo não representa r
 
 ### Publicar na Vercel
 
-1. Envie a versão para o repositório da equipe.
-2. Na Vercel, importe esse repositório e selecione a branch que contém a versão validada.
+1. Na Vercel, importe o repositório `Gabriel-Oliveira0611/Souly-Sprint04`.
+2. Selecione `main` como branch de produção e a pasta que contém `package.json` como diretório raiz.
 3. Use Framework Preset Vite, Install Command npm ci, Build Command npm run build e Output Directory dist.
 4. Configure VITE_API_BASE_URL com o valor acima nos ambientes de publicação necessários.
 5. Publique e confira /missoes, /recompensas e a abertura direta de uma rota de detalhes.
@@ -138,7 +142,15 @@ npm run build
 npm run preview
 ~~~
 
-Para executar todas as verificações: npm run check. O build gera dist. O comando preview serve o último build local.
+Para executar as verificações em sequência:
+
+~~~bash
+npm run check
+~~~
+
+Na revisão de 03/11/2026, a [execução da CI na branch main](https://github.com/Gabriel-Oliveira0611/Souly-Sprint04/actions/runs/41724340723) concluiu instalação, TypeScript, lint, 37 testes e build de produção. O registro completo e os limites dessa verificação estão em [docs/TESTES.md](docs/TESTES.md).
+
+O build gera `dist`. O comando `npm run preview` serve o último build local.
 
 Os testes automatizados usam respostas controladas e não alteram o banco remoto. Consulte docs/TESTES.md para a distinção entre esses testes e a validação manual com a API publicada.
 
@@ -146,7 +158,7 @@ Os testes automatizados usam respostas controladas e não alteram o banco remoto
 
 | Foto | Nome | RM | Turma | Perfis |
 | --- | --- | --- | --- | --- |
-| <img src="public/images/gabriel.jpg" width="64" alt="Gabriel"> | Gabriel Pereira de Oliveira | 572262 | 1TDSPW | [GitHub](https://github.com/Gabriel-Oliveira0611) · [LinkedIn](https://www.linkedin.com/in/gabriel-pereira-1aa4bb224/) |
+| <img src="public/images/gabriel.jpg" width="64" alt="Gabriel"> | Gabriel Pereira de Oliveira | 572262 | 1TDSPW | [GitHub](https://github.com/Gabriel-Oliveira0611) · [LinkedIn](https://www.linkedin.com/in/gabriel-oliveira-1aa4bb224/) |
 | <img src="public/images/adalto.jpg" width="64" alt="Adalto"> | Adalto Massahiro Nagabe | 572298 | 1TDSPW | [GitHub](https://github.com/AdaltoNagabe) · [LinkedIn](https://www.linkedin.com/in/adalto-massashiro-nagabe-149685104/) |
 | <img src="public/images/pedro.jpg" width="64" alt="Pedro"> | Pedro Henrique Carvalho | 570492 | 1TDSPW | [GitHub](https://github.com/pedrohcnascimento) · [LinkedIn](https://www.linkedin.com/in/pedrohenriquecn07/) |
 | <img src="public/images/murillo.jpg" width="64" alt="Murillo"> | Murillo Siviero Lopes | 572724 | 1TDSPW | [GitHub](https://github.com/MurilloSLopes) · [LinkedIn](https://www.linkedin.com/in/murillo-llopes-23out99/) |
@@ -156,16 +168,22 @@ Dados e mídias preservados da entrega anterior. Origem do projeto: [EcoPulse or
 
 ## Contato
 
-Os links profissionais dos integrantes estão acima e nas páginas Contato e Integrantes. Não há um endereço de suporte institucional verificado ou envio de mensagens dentro do site.
+O contato com a equipe pode ser realizado pelos perfis do GitHub e do LinkedIn indicados na tabela acima e nas páginas Contato e Integrantes da aplicação.
 
 ## Entrega
 
-Consulte docs/REQUISITOS.md e docs/ENTREGA.md. A FIAP exige ZIP único de até 50 MB, sem node_modules, enviado ao Portal do Aluno, além dos links e do histórico colaborativo verificável.
+Consulte a [matriz de requisitos](docs/REQUISITOS.md) e as [orientações de entrega](docs/ENTREGA.md). A submissão consiste em um único ZIP de até 50 MB, com os arquivos do projeto e sem `node_modules`, enviado pelo Portal do Aluno. O histórico de desenvolvimento está disponível no repositório público.
+
+## Documentação complementar
+
+- [Requisitos e evidências da Sprint 4](docs/REQUISITOS.md).
+- [Testes automatizados e validação funcional](docs/TESTES.md).
+- [Publicação e geração do arquivo de entrega](docs/ENTREGA.md).
 
 ## Referências técnicas
 
-- https://react.dev/reference/react
-- https://reactrouter.com/start/declarative/routing
-- https://vite.dev/guide/env-and-mode
-- https://tailwindcss.com/docs/installation/using-vite
-- https://vercel.com/docs/frameworks/frontend/vite
+- [react.dev/reference/react](https://react.dev/reference/react)
+- [reactrouter.com/start/declarative/routing](https://reactrouter.com/start/declarative/routing)
+- [vite.dev/guide/env-and-mode](https://vite.dev/guide/env-and-mode)
+- [tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite)
+- [vercel.com/docs/frameworks/frontend/vite](https://vercel.com/docs/frameworks/frontend/vite)
