@@ -9,6 +9,9 @@ import SobreSouly from "./pages/SobreSouly";
 import SoulyComoGuia from "./pages/SoulyComoGuia";
 import Contato from "./pages/Contato";
 import NaoEncontrada from "./pages/NaoEncontrada";
+import Missoes from "./pages/Missoes";
+import DetalheMissao from "./pages/DetalheMissao";
+import FormularioMissao from "./pages/FormularioMissao";
 import RouteEffects from "./components/RouteEffects";
 
 export default function App() {
@@ -28,6 +31,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/missoes" element={<Missoes />} />
+          <Route path="/missoes/nova" element={<FormularioMissao />} />
+          <Route path="/missoes/:id" element={<DetalheMissao />} />
+          <Route path="/missoes/:id/editar" element={<FormularioMissao />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/integrantes" element={<Integrantes />} />
           <Route path="/faq" element={<Faq />} />
